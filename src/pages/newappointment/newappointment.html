@@ -1,0 +1,55 @@
+<!--
+  Generated template for the NewappointmentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Create Appointment</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   
+
+
+      <ion-item-divider>
+          Service Details
+        </ion-item-divider>
+     
+        <ion-item class="box">
+            <ion-input placeholder="Service  Search" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item class="box">
+              <ion-input placeholder="Remark" type="text"></ion-input>
+            </ion-item>
+
+              <ion-row>
+                  <ion-item-divider>
+                   Select Date Range
+                  </ion-item-divider>
+                  <ion-col col-6>
+                      <ion-item class="box">
+                          <ion-label  *ngIf="!date">Date</ion-label>
+                          <ion-datetime   displayFormat="MM/DD/YYYY" [(ngModel)]="date"></ion-datetime>
+                        </ion-item>
+                  </ion-col>
+                  <ion-col col-6>
+                      <ion-item class="box">
+                          <ion-label  *ngIf="!time">Time</ion-label>
+                          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="time"></ion-datetime>
+                        </ion-item>
+                  </ion-col>
+                </ion-row>
+            
+      
+
+
+</ion-content>
+<ion-footer style="text-align: center">
+    <button class="publish-button" ion-button full >Book Appointment</button>
+<p class="title" style=" font-size: 12px; width: 100%; margin-left: 0px; color: #34495E;">© 2018 Invoay Software All
+  Rights Reserved</p>
+</ion-footer>

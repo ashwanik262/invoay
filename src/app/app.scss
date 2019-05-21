@@ -1,0 +1,93 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+html,body,h1,h2,h3,h4,h5,h6,p,div,a {
+	font-family: 'touche-Regular', sans-serif;
+	font-weight: normal !important;
+}
+
+$colors: ( primary : #488aff, secondary : #32db64, danger : #f53d3d, light : #f4f4f4, dark : #222, cal-color : #ff8732);
+
+
+.text-adam {
+	font-family: "adam", sans-serif !important;
+}
+
+.text-moonbold {
+	font-family: "moonbold", sans-serif !important;
+}
+.segment .segment-button{
+    text-transform: capitalize;
+}
+.item-background-color{
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: none !important;
+    color: #fff;
+
+    .item-input .label, .item-select .label, .item-datetime .label {
+        color: #fff;
+        font-size: 15px;
+    }
+}
+
+.item.item-block .item-inner {
+    border-bottom: none !important
+}
+.myview {
+ 
+    
+    background-image: url('../assets/imgs/bg.png');
+    background-size: cover !important
+  
+  }
+
+.page-img {
+    max-width: 25px;
+    max-height: 25px;
+    float: left;
+  }
+  .page-title {
+    margin-left: 50px;
+    font-size: 2.5vh;
+  color: #34495E;
+  }
+
+.toolbar-background {
+    border-color: map-get($colors, primary);
+    // background:map-get($colors, primary);
+    background:linear-gradient(to right, #5680ab, #34495E)
+}
+
+.toolbar-title {
+    padding: 0 12px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.bar-button-default, .bar-button-clear-default, .bar-button-default {
+    color: #fff;
+    background-color: transparent;
+}
+
+.searchbar-md .searchbar-input {
+    color: #fff;
+    background-color: rgba(0,0,0,0);
+}
+
+.searchbar-ios-input-placeholder-color{
+    color: rgba(0, 0, 0, .5)
+}

@@ -1,0 +1,27 @@
+<ion-content  padding>
+  <div style="text-align: center">
+    <img style="width: 80%;    margin-top: 2rem;" src="assets/imgs/invoay_icon.png">
+        <!-- <ion-item style="margin-top: 7rem;">
+            <ion-label position="floating">Username</ion-label>
+            <ion-input [(ngModel)]="username" type="text"></ion-input>
+          </ion-item> -->
+          <ion-item class="box">
+              <ion-label position="floating">Username</ion-label>
+              <ion-input [(ngModel)]="username" type="text"></ion-input>
+            </ion-item>
+          <ion-item class="box">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input [(ngModel)]="password" type="password" ></ion-input>
+          </ion-item>
+          <div style="text-align: center">
+              <button ion-button class="login-button" full   (click)="login(username,password)">LOGIN</button>
+          </div>
+  
+  </div>
+
+</ion-content>
+<ion-footer style="text-align: center">
+  <p class="title" style=" font-size: 12px; width: 100%; margin-left: 0px; color: #34495E;">© 2018 Invoay Software All
+    Rights Reserved</p>
+  </ion-footer>
+

@@ -1,0 +1,312 @@
+<ion-header no-border>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!-- <ion-title>Home</ion-title> -->
+    <ion-item class="item-background-color">
+      <ion-label style="color: #fff;
+        font-size: 17px;">Store</ion-label>
+      <ion-select interface="popover" [(ngModel)]="warehouseId" placeholder="Select Store">
+        <ion-option *ngFor="let item of store" value="{{item.id}}">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 10px">
+    <ion-segment (ionChange)="durationChange(timeDuration)"  style="margin-top: 0.5rem" mode="ios" [(ngModel)]="timeDuration">
+      <ion-segment-button value="today">
+        Today
+      </ion-segment-button>
+      <ion-segment-button value="yesterday">
+        Yesterday
+      </ion-segment-button>
+      <ion-segment-button value="week">
+        Last Week
+      </ion-segment-button>
+      <ion-segment-button value="month">
+        Last month
+      </ion-segment-button>
+      <ion-segment-button value="date">
+        Date
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <ion-item text-center class="item-y" no-lines>
+    <h2 ion-text color="primary">Synced at {{todaySyncedDate | date:'dd-M-yyyy H:mm'}}</h2>
+  </ion-item>
+  <ion-item *ngIf="from" text-center class="item-y" no-lines>
+      <h2 ion-text color="primary">{{from | date}} to {{to | date}}</h2>
+    </ion-item>
+  <div class="info">
+    <ion-row>
+      <ion-col col-6 (click)=earnigPage()>
+        <ion-card style="padding: 4px"
+          style="margin:0px;width:100%;min-height: 130px;text-align: center;border-top: 6px solid #303d8a;">
+          <ion-card-header style="text-align: center;">
+            <span style="text-align: center"><strong>Net Sale</strong> </span>
+          </ion-card-header>
+          <h4 style="font-size: 2.5rem;
+                      color: #303d8a;margin-top: 25px;">₹ 6,00000</h4>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6 (click)="inprogress()">
+        <ion-card style="padding: 4px"
+          style="margin:0px;width:100%;min-height: 130px;text-align: center;   border-top: 6px solid #f44336;">
+          <ion-card-header style="text-align: center;">
+            <span style="text-align: center"><strong>Transaction</strong> </span>
+          </ion-card-header>
+          <h4 style="font-size: 2.5rem;
+                      color: #f44336;margin-top: 25px;">180</h4>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="Category-sell">
+    <ion-card style="background:linear-gradient(to right, #5680ab, #34495E);color: white;min-height: 130px;">
+      <ion-card-header class="header" style="text-align: center;;color: white">
+        <span style="text-align: center"><strong>Category Sale</strong> </span>
+      </ion-card-header>
+      <ion-row>
+        <ion-col style="text-align: center;" col-8>
+          <ion-item >
+            <ion-label>
+               <strong>Products</strong> 
+            </ion-label>
+            <ion-note  item-right>180</ion-note>
+          </ion-item>
+          <ion-item >
+              <ion-label>
+                 <strong>Services</strong>
+              </ion-label>
+              <ion-note item-right>20</ion-note>
+            </ion-item>
+            <ion-item >
+              <ion-label>
+                 <strong>Packages</strong> 
+              </ion-label>
+              <ion-note  item-right>180</ion-note>
+            </ion-item>
+            <ion-item >
+                <ion-label>
+                   <strong>Deals</strong>
+                </ion-label>
+                <ion-note  item-right>20</ion-note>
+              </ion-item>
+              <ion-item style="border-bottom: none">
+                <ion-label>
+                   <strong>Membership</strong> 
+                </ion-label>
+                <ion-note  item-right>180</ion-note>
+              </ion-item>
+
+        </ion-col>
+        <ion-col style="text-align:  -webkit-center;margin-top: 75px;" col-4>
+          <img style="width: 50%" src="assets/icon/profit.svg" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <div class="wallet">
+    <ion-card style="background:linear-gradient(to right, #ffb885, #F44336);color: white;min-height: 130px;">
+      <ion-card-header class="header" style="text-align: center;;color: white">
+        <span style="text-align: center"><strong>Wallet/Prepade recharge</strong> </span>
+      </ion-card-header>
+      <ion-row>
+        <ion-col style="text-align: center;" col-8>
+          <ion-item >
+            <ion-label>
+               <strong>Wallet</strong>
+            </ion-label>
+            <ion-note  item-right>300</ion-note>
+          </ion-item>
+          <ion-item style="border-bottom: none">
+            <ion-label>
+               <strong>Load</strong> 
+            </ion-label>
+            <ion-note  item-right>30</ion-note>
+          </ion-item>
+
+        </ion-col>
+        <ion-col style="text-align:  -webkit-center;margin-top: 15px;" col-4>
+          <img style="width: 50%" src="assets/icon/wallet1.svg" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <div class="Cancel-bills">
+    <ion-card style="background:linear-gradient(to right, #94a1ea, #303d8a);color: white;    min-height: 130px;">
+      <ion-card-header class="header" style="text-align: center;;color: white">
+        <span style="text-align: center"><strong>Cancel Bill Details</strong> </span>
+      </ion-card-header>
+      <ion-row>
+        <ion-col style="text-align: center;" col-8>
+          <ion-item >
+            <ion-label>
+               <strong>Cancel Amount </strong>
+            </ion-label>
+            <ion-note  item-right>₹ 20,000</ion-note>
+          </ion-item>
+          <ion-item style="border-bottom: none">
+            <ion-label>
+               <strong>Cancel Bills</strong> 
+            </ion-label>
+            <ion-note  item-right>230</ion-note>
+          </ion-item>
+
+        </ion-col>
+        <ion-col style="text-align:  -webkit-center;margin-top: 15px;" col-4>
+          <img style="width: 50%" src="assets/icon/bills.svg" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <div class="sms">
+    <ion-card style="background:linear-gradient(to right, #ff9281, #ea1730);color: white;    min-height: 130px;">
+      <ion-card-header class="header" style="text-align: center;;color: white">
+        <span style="text-align: center"><strong>SMS Credit</strong> </span>
+      </ion-card-header>
+      <ion-row>
+        <ion-col style="text-align: center;margin-top: 20px;" col-8>
+          <!-- <h6> Promotional: 09</h6>
+                      <h6>Transactional : 2000</h6> -->
+          <h3 style="font-size: 3.8rem;
+                      color: #fff;
+                      float: left;
+                      margin-left: 35px;">18000</h3>
+
+        </ion-col>
+        <ion-col style="text-align:  -webkit-center;margin-top: 15px;" col-4>
+          <img style="width: 50%" src="assets/icon/sms.svg" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <div class="wallet">
+      <ion-card style="background:linear-gradient(to right, #ABEBC6, #2ECC71);color: white;min-height: 130px;">
+        <ion-card-header class="header" style="text-align: center;;color: white">
+          <span style="text-align: center"><strong>Customers</strong> </span>
+        </ion-card-header>
+        <ion-row>
+          <ion-col style="text-align: center;" col-8>
+              <ion-item>
+                  <ion-label>
+                     <strong>Total Customers</strong> 
+                  </ion-label>
+                  <ion-note  item-right>230</ion-note>
+                </ion-item>
+            <ion-item >
+              <ion-label>
+                 <strong>Existing Customers</strong>
+              </ion-label>
+              <ion-note  item-right>200</ion-note>
+            </ion-item>
+            <ion-item style="border-bottom: none">
+              <ion-label>
+                 <strong> New Customers</strong> 
+              </ion-label>
+              <ion-note  item-right>30</ion-note>
+            </ion-item>
+  
+          </ion-col>
+          <ion-col style="text-align:  -webkit-center;margin-top: 25px;" col-4>
+            <img style="width: 50%" src="assets/icon/users.svg" alt="">
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+
+  <!-- <div class="Birthdays">
+              <ion-card style="background:linear-gradient(to right, #c1bbbb, #6b6363);color: white;    min-height: 130px;">
+                  <ion-card-header class="header" style="text-align: center;;color: white">
+                      <span style="text-align: center"><strong>Birthday</strong> </span>
+                    </ion-card-header>
+                    <ion-row>
+                      <ion-col style="text-align: center;margin-top: 20px;" col-8>
+                        <h3 style="font-size: 3.8rem;
+                        color: #fff;
+                        float: left;
+                        margin-left: 35px;">26</h3>
+                      
+                      </ion-col>
+                      <ion-col style="text-align:  -webkit-center;margin-top: 15px;" col-4>
+                          <img style="width: 50%" src="assets/icon/cake.svg" alt="">
+                        </ion-col>
+                    </ion-row>
+                </ion-card>
+            </div> -->
+  <div class="info">
+    <ion-row>
+      <ion-col (click)="birthdays()" col-6>
+        <ion-card
+          style="background:linear-gradient(to right, #c1bbbb, #6b6363);color: white;padding: 4px; margin:0px;width:100%;min-height: 130px;">
+          <ion-card-header class="header" style="text-align: center;;color: white">
+            <span style="text-align: center"><strong>Birthdays</strong> </span>
+          </ion-card-header>
+          <ion-row>
+            <ion-col style="text-align: center;margin-top: 15px;" col-8>
+              <h3 style="font-size: 3.2rem;color: #fff; float: left; margin-left: 5px">45</h3>
+            </ion-col>
+            <ion-col style="text-align:  -webkit-center;margin-top: 15px;" col-4>
+              <img style="width: 100%" src="assets/icon/cake.svg" alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col (click)="anniversary()" col-6>
+        <ion-card
+          style="background:linear-gradient(to right, #ff6a6a, #ff4c4c);color: white;padding: 4px; margin:0px;width:100%;min-height: 130px;">
+          <ion-card-header class="header" style="text-align: center;;color: white">
+            <span style="text-align: center"><strong>Anniversary</strong> </span>
+          </ion-card-header>
+          <ion-row>
+            <ion-col style="text-align: center;margin-top: 15px;" col-8>
+              <h3 style="font-size: 3.2rem;color: #fff; float: left; margin-left: 5px">800</h3>
+            </ion-col>
+            <ion-col style="text-align:  -webkit-center;margin-top: 15px;" col-4>
+              <img style="width: 100%" src="assets/icon/gift.svg" alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </div>
+  <div class="feedback">
+    <ion-card style="background: linear-gradient(to right, #7ed5ff, #2a89b7);color: white;    min-height: 130px;">
+      <ion-card-header class="header" style="text-align: center;;color: white">
+        <span style="text-align: center"><strong>Feedback</strong> </span>
+      </ion-card-header>
+      <ion-row>
+        <ion-col style="text-align: center;" col-8>
+          <ion-item >
+            <ion-label>
+               <strong> Overall Feedback </strong>
+            </ion-label>
+            <ion-note  item-right>18%</ion-note>
+          </ion-item>
+          <ion-item style="border-bottom: none">
+            <ion-label>
+               <strong>Total Feedback</strong> 
+            </ion-label>
+            <ion-note  item-right>20</ion-note>
+          </ion-item>
+
+
+        </ion-col>
+        <ion-col style="text-align:  -webkit-center;margin-top: 15px;" col-4>
+          <img style="width: 50%" src="assets/icon/feedback.svg" alt="">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+
+
+</ion-content>
+<ion-footer style="text-align: center">
+  <p class="title" style=" font-size: 12px; width: 100%; margin-left: 0px; color: #34495E;">© 2018 Invoay Software All
+    Rights Reserved</p>
+</ion-footer>

@@ -1,0 +1,248 @@
+<!--
+  Generated template for the DayreportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-item class="item-background-color">
+      <ion-label style="color: #fff;
+        font-size: 17px;">Day End Report</ion-label>
+      <ion-select interface="popover" [(ngModel)]="warehouseId" placeholder="Store">
+        <ion-option *ngFor="let item of store" value="{{item.id}}">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-navbar>
+  <ion-navbar>
+    <ion-searchbar showCancelButton="true" (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #eee">
+  <ion-grid>
+    <ion-row *ngFor="let item of reportsList">
+      <ion-card style="border-radius: 5px;text-align: center;">
+        <ion-grid>
+          <ion-row style="border-bottom: 1px solid;color: #34495E;">
+            <ion-col col-7 style="text-align: left;">
+              <strong>Total Sale :</strong> {{item.totalSale}} <br>
+            </ion-col>
+            <ion-col col-5>
+              <strong>{{item.date}} <br>
+                {{item.time}}</strong>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 style="color: #34495E;text-align:left;">
+              <!-- <ion-note style="color:#34495E"  item-left>
+                    <strong> Day End By    :</strong> {{item.dayEndBy}}<br>
+                    <strong> Yesterday Opening    :</strong> {{item.yesterdayOpening}}<br>
+                    <strong> Membership Sale  :</strong> {{item.membershipSale}}<br>
+                    <strong> Cash    :</strong> {{item.cashSales}}<br>
+                    <strong> Card    :</strong> {{item.cardSales}}<br>
+                    <strong> Paytm    :</strong> {{item.paytmSales}}<br>
+                    <strong> Mobikwik    :</strong> {{item.mobikwikSales}}<br>
+                    <strong> Wallet    :</strong> {{item.walletSales}}<br>
+                    <strong> Big City    :</strong> {{item.bigCity}}<br>
+                    <strong> Cash    :</strong> {{item.cashSales}}<br>
+                    <strong>Little Sales : </strong>{{item.littleSales}}<br>
+                    <strong>Magicpin Sales : </strong>{{item.magicPinSales}}<br>
+                    <strong>Nearbuy Sales : </strong>{{item.nearbuySales}}<br>
+                    <strong>Cash Expenses :</strong>{{item.cashExpenses}}<br>
+                    <strong>By Store Advance Expenses :</strong>{{item.byStoreAdvenceExpenses}}<br>
+                    <strong>Total Expenses : </strong>{{item.totalExpenses}}<br>
+                    <strong> Total Wallet Recharge :</strong> {{item.totalWalletRecharge}}<br>
+                    <strong>Wallet Cash Recharge :  </strong>{{item.walletCashRecharge}}<br>
+                    <strong>Expected Cash :</strong>{{item.expectedCash}}<br>
+                    <strong>Cash Withdrawal : </strong>{{item.cashWithdrawal}}<br>
+                    <strong>Next Day Till Opening :</strong>{{item.nextDayTillOpening}}<br>
+                    <strong>By Store Advance Expenses :</strong>{{item.byStoreAdvenceExpenses}}<br>
+                    <strong>Difference  :</strong>{{item.difference}}<br>
+
+                    <strong>Handover Deposit Amount :</strong>{{item.handoverDepositAmount}}<br>
+                    <strong>Handover Deposit Bank Name :</strong>{{item.handoverBankName}}<br>
+                    <strong>Handover Closing Balance :</strong>{{item.handoverClosingBalance}}<br>
+                    <strong>Total Bill Count :</strong>{{item.totalBillCount}}<br>
+                    <strong>Total Customer Count :</strong>{{item.totalCustomerCount}}<br>
+                    <strong>Reason :</strong>{{item.reason}}<br>
+
+                  </ion-note>  -->
+
+              <ion-item>
+                <ion-label>
+                  <strong>Day End By </strong>
+                </ion-label>
+                <ion-note item-right>{{item.dayEndBy}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Yesterday Opening </strong>
+                </ion-label>
+                <ion-note item-right> {{item.yesterdayOpening}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Membership Sale </strong>
+                </ion-label>
+                <ion-note item-right>{{item.membershipSale}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Cash</strong>
+                </ion-label>
+                <ion-note item-right> {{item.cashSales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Card </strong>
+                </ion-label>
+                <ion-note item-right> {{item.cardSales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Paytm </strong>
+                </ion-label>
+                <ion-note item-right> {{item.paytmSales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Mobikwik </strong>
+                </ion-label>
+                <ion-note item-right> {{item.mobikwikSales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Wallet </strong>
+                </ion-label>
+                <ion-note item-right> {{item.walletSales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong> Big City </strong>
+                </ion-label>
+                <ion-note item-right> {{item.bigCity}}</ion-note>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <strong>Little Sales</strong>
+                </ion-label>
+                <ion-note item-right> {{item.littleSales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Magicpin Sales</strong>
+                </ion-label>
+                <ion-note item-right> {{item.magicPinSales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Nearbuy Sales</strong>
+                </ion-label>
+                <ion-note item-right> {{item.nearbuySales}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Cash Expenses</strong>
+                </ion-label>
+                <ion-note item-right> {{item.cashExpenses}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>By Store Advance Expenses </strong>
+                </ion-label>
+                <ion-note item-right> {{item.byStoreAdvenceExpenses}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Total Expenses</strong>
+                </ion-label>
+                <ion-note item-right> {{item.totalExpenses}}</ion-note>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>
+                  <strong>Total Wallet Recharge</strong>
+                </ion-label>
+                <ion-note item-right> {{item.totalWalletRecharge}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Wallet Cash Recharge</strong>
+                </ion-label>
+                <ion-note item-right> {{item.walletCashRecharge}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Expected Cash</strong>
+                </ion-label>
+                <ion-note item-right> {{item.expectedCash}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Cash Withdrawal</strong>
+                </ion-label>
+                <ion-note item-right> {{item.cashWithdrawal}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Next Day Till Opening</strong>
+                </ion-label>
+                <ion-note item-right> {{item.nextDayTillOpening}}</ion-note>
+              </ion-item>
+
+
+              <ion-item>
+                <ion-label>
+                  <strong>Difference</strong>
+                </ion-label>
+                <ion-note item-right> {{item.difference}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Handover Deposit Amount</strong>
+                </ion-label>
+                <ion-note item-right> {{item.handoverDepositAmount}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Handover Deposit Bank Name</strong>
+                </ion-label>
+                <ion-note item-right> {{item.handoverBankName}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Handover Closing Balance</strong>
+                </ion-label>
+                <ion-note item-right> {{item.handoverClosingBalance}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Total Bill Count</strong>
+                </ion-label>
+                <ion-note item-right> {{item.totalBillCount}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Total Bill Count</strong>
+                </ion-label>
+                <ion-note item-right> {{item.totalCustomerCount}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Reason</strong>
+                </ion-label>
+                <ion-note item-right> {{item.reason}}</ion-note>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer style="text-align: center">
+  <p class="title" style=" font-size: 12px; width: 100%; margin-left: 0px; color: #34495E;">© 2018 Invoay Software All
+    Rights Reserved</p>
+</ion-footer>

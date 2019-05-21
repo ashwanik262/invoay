@@ -1,0 +1,135 @@
+page-home {
+    .progressBarText {
+        position: absolute;
+        color: #bbb;
+        line-height: 1;
+        margin-top: 7rem;
+        bottom: auto;
+        margin-left: 6.5rem;
+        -webkit-transform: translateY(-50%) translateX(-50%);
+        transform: translateY(-50%) translateX(-50%);
+        font-size: 2.7rem;
+        padding-top: 10px;
+        padding-left: 7.5px;
+    }
+
+    .totalcall-row{
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .totalcall-circle {
+        width: 150px;
+        height: 150px;
+        border:4px solid red;
+        border-radius: 100px;
+        text-align: center
+    }
+
+    .item {
+        border-bottom: 1px solid #eee;
+    }
+    .card{
+        border-radius: 5px;
+    }
+    .label {
+        margin: 10px 5px 5px 0;
+        font-size: 14px;
+    }
+    .item-divider {
+        padding-left: 16px;
+        border-bottom: 1px solid #dedede;
+        font-size: 1.4rem;
+        color: #ffffff;
+        background-color: #566be6;
+    }
+    .card-header {
+        border-bottom: 1px solid gray;
+    }
+    .graph-div{
+        border-bottom: 1px solid gray;
+    }
+   
+    .bg{
+        background: url("../assets/imgs/hero-bg.jpg") no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 200px;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .card-header {
+        font-size: 1.3rem;
+        color: #222;
+        padding: 10px;
+    }
+
+    .header {
+        border-bottom: 1px solid #fff;
+    }
+
+    .info{
+        padding: 8px;
+    }
+
+    .card h6{
+        color: white
+    }
+
+
+    .item-background-color{
+        background-color: rgba(255, 255, 255, 0);
+        border-bottom: none !important;
+        color: #fff;
+
+        .item-input .label, .item-select .label, .item-datetime .label {
+            color: #fff;
+            font-size: 15px;
+        }
+    }
+
+    .Category-sell{
+        .item {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0);
+        }
+    }
+
+    .wallet{
+        .item {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+    }
+    .Cancel-bills{
+        .item {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+    }
+
+    .feedback{
+        .item {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+    }
+
+    .note{
+        color: #fff;
+        font-size: 14px;
+    }
+
+    .item.item-block .item-inner {
+        border-bottom: none !important
+    }
+    
+}

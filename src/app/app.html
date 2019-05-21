@@ -1,0 +1,113 @@
+<ion-menu [content]="content">
+  <ion-content>
+    <div class="myview" style="height: 140px;">
+      <!-- <img style="opacity: 0.3" src="assets/imgs/bg.jpg"> -->
+      <div>
+        <ion-grid style="height: 140px;">
+          <ion-row justify-content-centre align-items-center style="height: 70%">
+            
+            <ion-col style="text-align: center;color: #168dc7;margin-right: 40px;
+            margin-top: 35px;">
+              <h3><span style="color: primary"><strong>Welcome Shivam</strong></span></h3>
+            </ion-col>
+            <!-- <ion-col style="text-align: center;">
+              <ion-icon style="font-size: 4.2em;" color="primary" name="arrow-dropright"></ion-icon>
+            </ion-col> -->
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+    <ion-list>
+      <!-- <button menuClose ion-item id="side-menu" *ngFor="let page of pages" (click)="openPage(page)">
+        <img class="page-img" src={{page.image}} />
+        <div class="page-title">
+          {{page.title}}
+        </div>
+      </button> -->
+      
+      <button menuClose ion-item (click)="appointment()">
+        <img class="page-img" src='assets/icon/Appointment.svg' />
+        <div class="page-title">
+          Appointment
+        </div>
+      </button>
+           <button menuClose ion-item (click)="billReport()">
+          <img class="page-img" src='assets/icon/bill.svg' />
+          <div class="page-title">
+            Bill Report
+          </div>
+        </button>
+      <button menuClose ion-item (click)="campaign()">
+          <img class="page-img" src='assets/icon/campaign.svg' />
+          <div class="page-title">
+            Campaign
+          </div>
+        </button>
+      <button menuClose ion-item (click)="inventory()">
+          <img class="page-img" src='assets/icon/inventory.svg' />
+          <div class="page-title">
+            Inventory 
+          </div>
+        </button>
+      <button menuClose ion-item (click)="dayReport()">
+          <img class="page-img" src='assets/icon/weekly-calendar.svg' />
+          <div class="page-title">
+            Day End Report
+          </div>
+        </button>
+        <button menuClose ion-item (click)="sale()">
+            <img class="page-img" src='assets/icon/sales.svg' />
+            <div class="page-title">
+              Employee Sales
+            </div>
+          </button>
+      <!-- <button menuClose ion-item (click)="help()">
+          <img class="page-img" src='assets/icon/question.svg' />
+          <div class="page-title">
+            Help & Complaints
+          </div>
+        </button>  -->
+      <button menuClose ion-item (click)="attendance()">
+        <img class="page-img" src='assets/icon/attendance.svg' />
+        <div class="page-title">
+          Employee Attendance
+        </div>
+      </button>
+      <button menuClose ion-item (click)="holdBills()">
+        <img class="page-img" src='assets/icon/hold.svg' />
+        <div class="page-title">
+          Hold Bills
+        </div>
+      </button> 
+      <button menuClose ion-item (click)="Feedback()">
+          <img class="page-img" src='assets/icon/blog.svg' />
+          <div class="page-title">
+            Feedback
+          </div>
+        </button> 
+      <!-- <button menuClose ion-item (click)="share()">
+        <img class="page-img" src='assets/icon/menu/share.svg' />
+        <div class="page-title">
+          Refer
+        </div>
+      </button>
+     
+      <button menuClose ion-item (click)="appinfo()">
+        <img class="page-img" src='assets/icon/menu/information.svg' />
+        <div class="page-title">
+          App info
+        </div>
+      </button> -->
+     
+      
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <div style="text-align:center;width:100%">
+      <button style="width: 98%" ion-button (click)="logoutAlert()">LOGOUT</button>
+    </div>
+  </ion-footer>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
