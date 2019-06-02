@@ -1,0 +1,65 @@
+<!--
+  Generated template for the ChartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Graphical Representation</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <div style="padding: 10px">
+        <ion-segment (ionChange)="durationChange(timeDuration)"  style="margin-top: 0.5rem" mode="ios" [(ngModel)]="timeDuration">
+          <ion-segment-button value="today">
+            Today
+          </ion-segment-button>
+          <ion-segment-button value="yesterday">
+            Yesterday
+          </ion-segment-button>
+          <ion-segment-button value="week">
+            Last Week
+          </ion-segment-button>
+          <ion-segment-button value="month">
+            Last month
+          </ion-segment-button>
+          <ion-segment-button value="date">
+            Date
+          </ion-segment-button>
+        </ion-segment>
+        </div>
+    <div *ngIf="service" class="graph-div1">
+        <ion-item-divider style="margin-bottom: 10px;">
+                Monthly Distribution
+        </ion-item-divider>
+        <canvas class="canvas" width="600" height="600" #doughnutCanvas></canvas>
+      </div>
+
+      <div *ngIf="sale"  class="graph-div">
+          <ion-item-divider style="margin-bottom: 10px;">
+                  Sale Distribution
+          </ion-item-divider>
+          <canvas class="canvas" width="600" height="600" #barCanvas></canvas>
+        </div>
+</ion-content>
+<ion-footer>
+  <ion-segment [(ngModel)]="type" color="primary" (ionChange)="segmentChanged(type)">
+    <ion-segment-button value="sale">
+      sale
+    </ion-segment-button>
+    <ion-segment-button value="Stores">
+      Stores
+    </ion-segment-button>
+    <ion-segment-button value="Days">
+      Days
+    </ion-segment-button>
+    <ion-segment-button value="sale">
+      sale
+    </ion-segment-button>
+    <ion-segment-button value="Services">
+      Services
+    </ion-segment-button>
+  </ion-segment>
+</ion-footer>

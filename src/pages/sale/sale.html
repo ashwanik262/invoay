@@ -20,6 +20,25 @@
 </ion-header>
 
 <ion-content  style="background: #eee">
+  <div style="padding: 10px">
+  <ion-segment (ionChange)="durationChange(timeDuration)"  style="margin-top: 0.5rem" mode="ios" [(ngModel)]="timeDuration">
+    <ion-segment-button value="today">
+      Today
+    </ion-segment-button>
+    <ion-segment-button value="yesterday">
+      Yesterday
+    </ion-segment-button>
+    <ion-segment-button value="week">
+      Last Week
+    </ion-segment-button>
+    <ion-segment-button value="month">
+      Last month
+    </ion-segment-button>
+    <ion-segment-button value="date">
+      Date
+    </ion-segment-button>
+  </ion-segment>
+  </div>
     <ion-grid>
         <ion-row *ngFor="let item of employeeSalesList">
           <ion-card style="border-radius: 5px;text-align: center;">

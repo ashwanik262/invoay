@@ -43,48 +43,64 @@
             Campaign
           </div>
         </button>
+        <button menuClose ion-item (click)="chart()">
+            <img class="page-img" src='assets/icon/chart.svg' />
+            <div class="page-title">
+              Chart
+            </div>
+          </button>
+          <button menuClose ion-item (click)="dayReport()">
+              <img class="page-img" src='assets/icon/weekly-calendar.svg' />
+              <div class="page-title">
+                Day End Report
+              </div>
+            </button>
+            <button menuClose ion-item (click)="attendance()">
+                <img class="page-img" src='assets/icon/attendance.svg' />
+                <div class="page-title">
+                  Employee Attendance
+                </div>
+              </button>
+            <button menuClose ion-item (click)="sale()">
+                <img class="page-img" src='assets/icon/sales.svg' />
+                <div class="page-title">
+                  Employee Sales
+                </div>
+              </button>
+               <button menuClose ion-item (click)="holdBills()">
+        <img class="page-img" src='assets/icon/hold.svg' />
+        <div class="page-title">
+          Hold Bills
+        </div>
+      </button> 
       <button menuClose ion-item (click)="inventory()">
           <img class="page-img" src='assets/icon/inventory.svg' />
           <div class="page-title">
             Inventory 
           </div>
         </button>
-      <button menuClose ion-item (click)="dayReport()">
-          <img class="page-img" src='assets/icon/weekly-calendar.svg' />
-          <div class="page-title">
-            Day End Report
-          </div>
-        </button>
-        <button menuClose ion-item (click)="sale()">
-            <img class="page-img" src='assets/icon/sales.svg' />
-            <div class="page-title">
-              Employee Sales
-            </div>
-          </button>
+      
+     
       <!-- <button menuClose ion-item (click)="help()">
           <img class="page-img" src='assets/icon/question.svg' />
           <div class="page-title">
             Help & Complaints
           </div>
         </button>  -->
-      <button menuClose ion-item (click)="attendance()">
-        <img class="page-img" src='assets/icon/attendance.svg' />
-        <div class="page-title">
-          Employee Attendance
-        </div>
-      </button>
-      <button menuClose ion-item (click)="holdBills()">
-        <img class="page-img" src='assets/icon/hold.svg' />
-        <div class="page-title">
-          Hold Bills
-        </div>
-      </button> 
-      <button menuClose ion-item (click)="Feedback()">
+   
+     
+      <button menuClose ion-item (click)="lead()">
           <img class="page-img" src='assets/icon/blog.svg' />
           <div class="page-title">
-            Feedback
+            Lead
           </div>
         </button> 
+        <button menuClose ion-item (click)="raiseTicket()">
+            <img class="page-img" src='assets/icon/ticket.svg' />
+            <div class="page-title">
+              Raise Ticket 
+            </div>
+          </button>
       <!-- <button menuClose ion-item (click)="share()">
         <img class="page-img" src='assets/icon/menu/share.svg' />
         <div class="page-title">

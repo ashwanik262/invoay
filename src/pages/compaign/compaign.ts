@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddCampaignPage } from '../add-campaign/add-campaign';
+import { ModalController, Modal } from "ionic-angular";
+import { CalendarModal, CalendarModalOptions, CalendarResult } from "ion2-calendar";
 
 /**
  * Generated class for the CompaignPage page.
@@ -18,8 +20,10 @@ export class CompaignPage {
   campaign:any={title:'',content:'',sentDate:'',sentToCustomers:'',viewedBy:''};
   campaignsList=[];
   store: { name: string; id: string; }[];
+  from: any;
+  to: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,private modalCtrl: ModalController,public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -40,5 +44,29 @@ export class CompaignPage {
   addCampaign(){
     this.navCtrl.push(AddCampaignPage);
   }
+
+  durationChange(duration) {
+    if (duration === 'date') {
+        // this.selectedDuration='Custom Dates'
+        this.openCalendar();
+        // localStorage.setItem("durationType", "Custom Dates");
+    }
+}
+
+openCalendar() {
+  const options: CalendarModalOptions = {
+      pickMode: 'range',
+      canBackwardsSelected: false,
+
+  };
+  let myCalendar = this.modalCtrl.create(CalendarModal, {
+      options: options
+  });
+  myCalendar.present();
+  myCalendar.onDidDismiss((date, type: string) => {
+      this.from = date.from.dateObj.toISOString();
+       this.to = date.to.dateObj.toISOString();
+  })
+}
 
 }

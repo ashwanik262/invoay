@@ -18,10 +18,13 @@ import { SalePage } from '../pages/sale/sale'
 import { AddCampaignPage } from '../pages/add-campaign/add-campaign';
 import { NewappointmentPage } from '../pages/newappointment/newappointment';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { LeadPage } from '../pages/lead/lead';
+import { ChartPage } from '../pages/chart/chart';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CalendarModule } from "ion2-calendar";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { CalendarModule } from "ion2-calendar";
     SalePage,
     AddCampaignPage,
     NewappointmentPage,
-    FeedbackPage
+    FeedbackPage,
+    LeadPage,
+    ChartPage
 
 
 
@@ -70,11 +75,14 @@ import { CalendarModule } from "ion2-calendar";
     SalePage,
     AddCampaignPage,
     NewappointmentPage,
-    FeedbackPage
+    FeedbackPage,
+    LeadPage,
+    ChartPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

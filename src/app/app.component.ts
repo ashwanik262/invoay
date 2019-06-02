@@ -14,6 +14,9 @@ import { HoldbillsPage } from '../pages/holdbills/holdbills'
 import { InventoryPage } from '../pages/inventory/inventory'
 import { SalePage } from '../pages/sale/sale'
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { LeadPage } from '../pages/lead/lead';
+import { ChartPage } from '../pages/chart/chart';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,9 +26,9 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
-  constructor(public alertCtrl: AlertController,public menu : MenuController, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private iab: InAppBrowser, public alertCtrl: AlertController, public menu: MenuController, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -50,44 +53,48 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-  appointment(){
+  appointment() {
     this.nav.push(AppointmentPage)
 
   }
 
-  billReport(){
+  billReport() {
     this.nav.push(BillreportPage)
-    
+
   }
 
-  campaign(){
+  campaign() {
     this.nav.push(CompaignPage)
-    
+
   }
 
-  inventory(){
+  inventory() {
     this.nav.push(InventoryPage)
   }
 
-  dayReport(){
+  dayReport() {
     this.nav.push(DayreportPage)
   }
 
-  sale(){
+  sale() {
     this.nav.push(SalePage)
-    
+
   }
 
-  attendance(){
+  attendance() {
     this.nav.push(AttendancePage)
   }
 
-  holdBills(){
+  holdBills() {
     this.nav.push(HoldbillsPage)
   }
 
-  Feedback(){
-    this.nav.push(FeedbackPage)
+  lead() {
+    this.nav.push(LeadPage)
+  }
+
+  chart() {
+    this.nav.push(ChartPage)
   }
 
   logoutAlert() {
@@ -96,26 +103,33 @@ export class MyApp {
       title: 'LOGOUT?',
       message: 'Do you agree to <b>LOGOUT</b>?',
       buttons: [
-      {
-        text: 'CANCEL',
-        handler: () => {
-        //  console.log('Disagree clicked');
+        {
+          text: 'CANCEL',
+          handler: () => {
+            //  console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'LOGOUT',
+          handler: () => {
+            this.logout();
+          }
         }
-      },
-      {
-        text: 'LOGOUT',
-        handler: () => {
-          this.logout();
-        }
-      }
       ]
     });
     confirm.present();
   }
 
-  logout(){
+  logout() {
     localStorage.clear();
     this.nav.setRoot(LoginPage);
+  }
+
+  raiseTicket() {
+    const browser = this.iab.create('https://helpdesk.invoay.com/index.php');
+    browser.on('loadstop').subscribe(event => {
+      browser.insertCSS({ code: "body{color: red;" });
+    });
   }
 
 }

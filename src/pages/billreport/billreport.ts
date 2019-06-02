@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController, Modal } from "ionic-angular";
+import { CalendarModal, CalendarModalOptions, CalendarResult } from "ion2-calendar";
 
 /**
  * Generated class for the BillreportPage page.
@@ -18,9 +20,11 @@ export class BillreportPage {
   		cashDiscount:'',gst:'',totalBill:'',payAmount:'',paymentMode:'',customerName:'',customerNumber:'',
   		returnBillDate:'',returBillTime:'',returnBy:'',returnReason:''};
   billList=[];
-  store: { name: string; id: string; }[];
+	store: { name: string; id: string; }[];
+	from: any;
+  to: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,private modalCtrl: ModalController,public navParams: NavParams) {
     for(var i=0;i<5;i++){
   	  this.bill.billNumber=i+'';
   	  this.bill.date='11 Jan 2013';
@@ -50,6 +54,30 @@ export class BillreportPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BillreportPage');
-  }
+	}
+	
+	durationChange(duration) {
+    if (duration === 'date') {
+        // this.selectedDuration='Custom Dates'
+        this.openCalendar();
+        // localStorage.setItem("durationType", "Custom Dates");
+    }
+}
+
+openCalendar() {
+  const options: CalendarModalOptions = {
+      pickMode: 'range',
+      canBackwardsSelected: false,
+
+  };
+  let myCalendar = this.modalCtrl.create(CalendarModal, {
+      options: options
+  });
+  myCalendar.present();
+  myCalendar.onDidDismiss((date, type: string) => {
+      this.from = date.from.dateObj.toISOString();
+       this.to = date.to.dateObj.toISOString();
+  })
+}
 
 }

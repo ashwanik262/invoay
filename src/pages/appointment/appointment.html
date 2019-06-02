@@ -20,17 +20,25 @@
 </ion-header>
 
 <ion-content style="background: #eee">
-  <!-- <ion-card no-lines style="background:linear-gradient(to right, #5680ab, #34495E);color: white" *ngFor="let appointment of appointmentList" no-padding>
-        <ion-card-header> {{appointment.storeName}} </ion-card-header>
-        <ion-card-content>
-          <div> Customer Name: {{appointment.customerName}}</div>
-          <div> Customer Number: {{appointment.customerNumber}}</div>
-          <div> Service: {{appointment.serviceName}}</div>
-          <div> Customer Name: {{appointment.remark}}</div>
-          <div> Customer Name: {{appointment.receivedByStore}}</div>
-          <div> Sent On: {{appointment.date}} {{appointment.time}}</div>
-        </ion-card-content>
-      </ion-card> -->
+    <div style="padding: 10px">
+        <ion-segment (ionChange)="durationChange(timeDuration)"  style="margin-top: 0.5rem" mode="ios" [(ngModel)]="timeDuration">
+          <ion-segment-button value="today">
+            Today
+          </ion-segment-button>
+          <ion-segment-button value="yesterday">
+            Yesterday
+          </ion-segment-button>
+          <ion-segment-button value="week">
+            Last Week
+          </ion-segment-button>
+          <ion-segment-button value="month">
+            Last month
+          </ion-segment-button>
+          <ion-segment-button value="date">
+            Date
+          </ion-segment-button>
+        </ion-segment>
+        </div>
 
   <ion-grid>
     <ion-row *ngFor="let item of appointmentList">
