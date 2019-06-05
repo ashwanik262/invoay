@@ -1,7 +1,48 @@
 page-chart {
-    .graph-div{
-        margin-top: 20px;
-        border-top: 1px solid #eee;
-      }
-      
+  ion-scroll[scrollX] {
+    white-space: nowrap;
+    height: 45px;
+    overflow: hidden;
+
+    .scroll-item {
+      display: inline-block;
+    }
+
+    .selectable-icon{
+      // margin: 10px;
+      // color: red;
+      // font-size: 100px;
+    }
+
+    ion-avatar img{
+      // margin: 10px;
+    }
+  }
+
+  .item {
+    padding-left: 0;
+}
+
+  .label {
+    margin: 0; 
+}
+
+.item.item-block .item-inner {
+  padding-right: 0;
+
+}
+
+  ion-scroll[scroll-avatar]{
+    height: 20px;
+  }
+
+  /* Hide ion-content scrollbar */
+  ::-webkit-scrollbar{
+    display:none;
+  }
+
+  .graph-div{
+    margin-top: 20px;
+    // border-top: 1px solid gray;
+  }
 }

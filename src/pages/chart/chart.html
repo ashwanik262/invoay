@@ -30,36 +30,34 @@
           </ion-segment-button>
         </ion-segment>
         </div>
-    <div *ngIf="service" class="graph-div1">
-        <ion-item-divider style="margin-bottom: 10px;">
-                Monthly Distribution
-        </ion-item-divider>
+
+     
+     <div *ngIf="isStore" class="graph-div">
         <canvas class="canvas" width="600" height="600" #doughnutCanvas></canvas>
       </div>
 
-      <div *ngIf="sale"  class="graph-div">
-          <ion-item-divider style="margin-bottom: 10px;">
-                  Sale Distribution
-          </ion-item-divider>
-          <canvas class="canvas" width="600" height="600" #barCanvas></canvas>
+      <div *ngIf="isSale"  class="graph-div">
+         <canvas class="canvas" width="600" height="600" #barCanvas></canvas>
         </div>
+
+         <div *ngIf="isService"  class="graph-div">
+          <ion-item-divider style="margin-bottom: 10px;">
+                Services
+          </ion-item-divider>
+          <canvas class="canvas" width="600" height="600" #pieCanvas></canvas>
+        </div> 
 </ion-content>
 <ion-footer>
-  <ion-segment [(ngModel)]="type" color="primary" (ionChange)="segmentChanged(type)">
-    <ion-segment-button value="sale">
-      sale
-    </ion-segment-button>
-    <ion-segment-button value="Stores">
-      Stores
-    </ion-segment-button>
-    <ion-segment-button value="Days">
-      Days
-    </ion-segment-button>
-    <ion-segment-button value="sale">
-      sale
-    </ion-segment-button>
-    <ion-segment-button value="Services">
-      Services
-    </ion-segment-button>
-  </ion-segment>
+  <ion-row>
+      <ion-item no-lines>
+        <ion-scroll scrollX="true">
+            <button ion-button class="scroll-item selectable-icon" *ngFor="let item of segment" (click)="buttonClicked(item)" >
+                  {{item}}
+            </button>
+        </ion-scroll>
+      </ion-item>
+    
+    </ion-row>
+  
+
 </ion-footer>

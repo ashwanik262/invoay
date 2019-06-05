@@ -95,6 +95,7 @@ export class MyApp {
 
   chart() {
     this.nav.push(ChartPage)
+    // this.cominSoon();
   }
 
   logoutAlert() {
@@ -123,6 +124,23 @@ export class MyApp {
   logout() {
     localStorage.clear();
     this.nav.setRoot(LoginPage);
+  }
+
+  cominSoon() {
+    this.menu.close();
+    let confirm = this.alertCtrl.create({
+      title: 'Under Construction?',
+      message: 'This Feature is <b>Under Construction </b>?',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            //  console.log('Disagree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   raiseTicket() {
