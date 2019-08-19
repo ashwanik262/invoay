@@ -1,9 +1,8 @@
-<ion-header no-border>
+<!-- <ion-header no-border>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <!-- <ion-title>Home</ion-title> -->
     <ion-item class="item-background-color">
       <ion-label style="color: #fff;
         font-size: 17px;">Store</ion-label>
@@ -12,10 +11,54 @@
       </ion-select>
     </ion-item>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
-  <div style="padding: 10px">
+<ion-content scrollX="false" scrollY="true">
+    <div   style="height: 190px;background-image: url('assets/imgs/bg.jpg');background-repeat: no-repeat;background-size:cover;">
+      <div  style="background-color: rgba(0, 0, 0, 0.3);    height: -webkit-fill-available;"> 
+      <ion-navbar>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+            <ion-item class="item-background-color">
+                <ion-label style="color: #fff;
+                  font-size: 17px;">Home</ion-label>
+                <ion-select interface="popover" [(ngModel)]="warehouseId" placeholder="Store">
+                  <ion-option *ngFor="let item of store" value="{{item.id}}">{{item.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+          </ion-navbar>
+          <div style="padding: 3px">
+              <ion-segment (ionChange)="durationChange(timeDuration)"  style="margin-top: 0.5rem"  [(ngModel)]="timeDuration">
+                  <ion-segment-button value="today">
+                    Today
+                  </ion-segment-button>
+                  <ion-segment-button value="yesterday">
+                    Yesterday
+                  </ion-segment-button>
+                  <ion-segment-button value="week">
+                    Last Week
+                  </ion-segment-button>
+                  <ion-segment-button value="month">
+                    Last month
+                  </ion-segment-button>
+                  <ion-segment-button value="date">
+                    Date
+                  </ion-segment-button>
+                </ion-segment>
+                </div>
+                <ion-item style="background: rgba(0,0,0,0)" text-center class="item-y" no-lines>
+                    <h2 ion-text color="white">Synced at {{lastSync | date:'dd-M-yyyy H:mm'}}</h2>
+                  </ion-item>
+
+                 
+                <!-- <ion-searchbar showCancelButton ="true" (ionInput)="getItems($event)"></ion-searchbar> -->
+
+    </div>
+    </div>
+
+    <div class="main-content" style="background: white;margin-top: -10px;border-top-left-radius: 15px;border-top-right-radius: 15px;height: -webkit-fill-available">
+  <!-- <div style="padding: 10px">
     <ion-segment (ionChange)="durationChange(timeDuration)"  style="margin-top: 0.5rem" mode="ios" [(ngModel)]="timeDuration">
       <ion-segment-button value="today">
         Today
@@ -33,10 +76,9 @@
         Date
       </ion-segment-button>
     </ion-segment>
-  </div>
-  <ion-item text-center class="item-y" no-lines>
-    <h2 ion-text color="primary">Synced at {{todaySyncedDate | date:'dd-M-yyyy H:mm'}}</h2>
-  </ion-item>
+  </div> -->
+  <div style="padding-top: 15px">
+      <ion-scroll scrollX="false" scrollY="true" style="width: 100%;height: -webkit-fill-available;">
   <ion-item *ngIf="from" text-center class="item-y" no-lines>
       <h2 ion-text color="primary">{{from | date}} to {{to | date}}</h2>
     </ion-item>
@@ -49,7 +91,7 @@
             <span style="text-align: center"><strong>Net Sale</strong> </span>
           </ion-card-header>
           <h4 style="font-size: 2.5rem;
-                      color: #303d8a;margin-top: 25px;">₹ 6,00000</h4>
+                      color: #303d8a;margin-top: 25px;">₹ {{sum |  number: '1.0-0' }}</h4>
         </ion-card>
       </ion-col>
       <ion-col col-6 (click)="inprogress()">
@@ -59,13 +101,13 @@
             <span style="text-align: center"><strong>Transaction</strong> </span>
           </ion-card-header>
           <h4 style="font-size: 2.5rem;
-                      color: #f44336;margin-top: 25px;">180</h4>
+                      color: #f44336;margin-top: 25px;">{{bills.length}}</h4>
         </ion-card>
       </ion-col>
     </ion-row>
   </div>
   <div class="Category-sell">
-    <ion-card style="background:linear-gradient(to right, #5680ab, #34495E);color: white;min-height: 130px;">
+    <ion-card style="background:linear-gradient(to right, #ffb885, #F44336);color: white;min-height: 130px;">
       <ion-card-header class="header" style="text-align: center;;color: white">
         <span style="text-align: center"><strong>Category Sale</strong> </span>
       </ion-card-header>
@@ -110,7 +152,7 @@
     </ion-card>
   </div>
   <div class="wallet">
-    <ion-card style="background:linear-gradient(to right, #ffb885, #F44336);color: white;min-height: 130px;">
+    <ion-card style="background:linear-gradient(to right, #5680ab, #34495E);background:linear-gradient(to right, #ABEBC6, #2ECC71);color: white;min-height: 130px;">
       <ion-card-header class="header" style="text-align: center;;color: white">
         <span style="text-align: center"><strong>Wallet/Prepade recharge</strong> </span>
       </ion-card-header>
@@ -159,13 +201,13 @@
             <ion-label>
                <strong>Cancel Amount </strong>
             </ion-label>
-            <ion-note  item-right>₹ 20,000</ion-note>
+            <ion-note  item-right>₹ {{cancleBillsSum  |  number: '1.0-0'}}</ion-note>
           </ion-item>
           <ion-item style="border-bottom: none">
             <ion-label>
                <strong>Cancel Bills</strong> 
             </ion-label>
-            <ion-note  item-right>230</ion-note>
+            <ion-note  item-right>{{cancleBills.length}}</ion-note>
           </ion-item>
 
         </ion-col>
@@ -197,7 +239,7 @@
     </ion-card>
   </div>
   <div class="wallet">
-      <ion-card style="background:linear-gradient(to right, #ABEBC6, #2ECC71);color: white;min-height: 130px;">
+      <ion-card style="background:linear-gradient(to right, #5680ab, #34495E);color: white;min-height: 130px;">
         <ion-card-header class="header" style="text-align: center;;color: white">
           <span style="text-align: center"><strong>Customers</strong> </span>
         </ion-card-header>
@@ -347,8 +389,9 @@
       <p class="title" style=" font-size: 12px; width: 100%; margin-left: 0px; color: #34495E;">© 2019 Invoay Software All
           Rights Reserved</p>
   </div>
- 
-
+  </ion-scroll>
+ </div>
+</div>
 
 </ion-content>
 <!-- <ion-footer style="text-align: center">

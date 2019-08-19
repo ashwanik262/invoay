@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController, Modal } from "ionic-angular";
 import { CalendarModal, CalendarModalOptions, CalendarResult } from "ion2-calendar";
-
+import { UseralertProvider } from '../../providers/useralert/useralert';
+import { UserservicesProvider } from '../../providers/userservices/userservices';
+import moment from "moment"; 
 /**
  * Generated class for the BillreportPage page.
  *
@@ -23,38 +25,37 @@ export class BillreportPage {
 	store: { name: string; id: string; }[];
 	from: any;
   to: any;
+  response: any;
 
-  constructor(public navCtrl: NavController,private modalCtrl: ModalController,public navParams: NavParams) {
-    for(var i=0;i<5;i++){
-  	  this.bill.billNumber=i+'';
-  	  this.bill.date='11 Jan 2013';
-  	  this.bill.time='10:20 am';
-  	  this.bill.billBy='Ankit';
-  	  this.bill.grossTotal=500+'';
-  	  this.bill.memberShipDiscount=210;
-  	  this.bill.percentageDiscount='10%';
-  	  this.bill.cashDiscount='50';
-  	  this.bill.gst=14+'';
-  	  this.bill.totalBill=514+'';
-  	  this.bill.payAmount=432+'';
-  	  this.bill.paymentMode='Cash';
-  	  this.bill.customerName='Shivam';
-  	  this.bill.customerNumber='938298298429';
-  	  if(i%2===0){
-  	  	this.bill.returnBillDate='12 Jan 2015';
-  	  	this.bill.returBillTime='03 : 30 pm';
-  	  	this.bill.returnBy='Ram';
-  	  	this.bill.returnReason='software malfunction';
-  	  }	
-      this.billList.push(this.bill);
-      this.bill=new Object();
-    }
-    this.store=[{name: "Store 1",id:"1"},{name: "Store 2",id:"2"},{name: "Store 3",id:"3"},{name: "Store 4",id:"4"},{name: "Store 5",id:"5"}]
+  constructor(public navCtrl: NavController,private modalCtrl: ModalController,public userAlert : UseralertProvider,public userService:UserservicesProvider,public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BillreportPage');
-	}
+    this.getbillList();
+  }
+  
+  getbillList() {
+    this.userAlert.showLoading('Please Wait...');
+    let userToken=sessionStorage.getItem('userAccessToken');
+    var d = new Date();
+    // d.setDate(d.getDate() - 1);
+    let startdate = moment(d).format("DD-MMM-YYYY");
+    let enddate = moment(d).format("DD-MMM-YYYY");
+   
+    this.userService.getBills(userToken,startdate,enddate).subscribe(res => {
+      console.log('getbillList data :- ' + res);
+      this.response =res;
+    this.billList=res;
+      if(res){
+        // this.measures =res;
+      }
+      this.userAlert.dismissLoading();
+    }, error => {
+      console.log(error);
+      this.userAlert.dismissLoading();
+    });
+  }
 	
 	durationChange(duration) {
     if (duration === 'date') {
@@ -78,6 +79,33 @@ openCalendar() {
       this.from = date.from.dateObj.toISOString();
        this.to = date.to.dateObj.toISOString();
   })
+}
+
+getItems(ev: any) {
+  // this.isSearch = true;
+  // set val to the value of the searchbar
+  const val = ev.target.value;
+  if (val == '') {
+    // this.isSearch = false;
+    this.billList = this.response;
+
+    return;
+  }
+  if (val && val.trim() != '') {
+        this.billList = this.response;
+        console.log(this.billList.length);
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+
+          this.billList = this.billList.filter((item) => {
+            return ((item.BillId.toString().indexOf(val.toLowerCase()) > -1) || (item.BillByEmployeeId.toString().indexOf(val.toLowerCase()) > -1));
+          })
+        }
+  }
+
+
+
+
 }
 
 }

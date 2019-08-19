@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -25,6 +26,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CalendarModule } from "ion2-calendar";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ApisProvider } from '../providers/apis/apis';
+import { UserservicesProvider } from '../providers/userservices/userservices';
+import { UrlProvider } from '../providers/url/url';
+import { HttpRestclientProvider } from '../providers/http-restclient/http-restclient';
+import { UseralertProvider } from '../providers/useralert/useralert';
 
 @NgModule({
   declarations: [
@@ -56,6 +62,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   imports: [
     BrowserModule,
     CalendarModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -83,7 +90,12 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     StatusBar,
     SplashScreen,
     InAppBrowser,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApisProvider,
+    UserservicesProvider,
+    UrlProvider,
+    HttpRestclientProvider,
+    UseralertProvider
   ]
 })
 export class AppModule {}

@@ -24,6 +24,10 @@ page-billreport {
         font-size: 14px;
     }
 
+    .header{
+        background:linear-gradient(to right, #5680ab, #34495E)
+    }
+
     .label {
         color: #34495E;
         margin: 10px 5px 5px 0;
@@ -32,6 +36,13 @@ page-billreport {
 
     .item {
         border-bottom: 1px solid #d7dbe0;
+    }
+
+    .card-md h6 {
+        margin: 12px 0;
+        font-size: 1.4rem;
+        font-weight: normal;
+        color: #34495E;
     }
 }
 

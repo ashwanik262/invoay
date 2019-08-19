@@ -1,39 +1,84 @@
-page-login {
 
-    .bg{
-        background: url(../assets/imgs/invoay_bg.png) no-repeat center center fixed;
-        -webkit-background-size: cover;
-    }
-
-    .item {
-        padding-left: 16px;
-        padding-right: 0;
-        position: relative;
-        font-size: 1.6rem;
-        font-weight: normal;
-        text-transform: none;
-        color: #000;
-        background-color: rgba(255, 255, 255, 0);
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    // .login-button{
-    //     margin-top: 2rem;
-    //     width: 99%;
-    // }
-
-    .box{
-        border: 1px solid #8f8e8e;
-        border-radius: 5px;
-        margin-top: 10px;
-     }
+    page-login {
+        .logoholder
+        {
+            margin-top: 40px;
+         
+            text-align: center
+        }
+        .detailsholder{
+            padding-top: 70px;
+            ion-input{
+                background-color: #f5f5f5;
+                border-radius: 5px;
+               // width: 304px;
+                height: 50px;
+               
+        
+                ::-webkit-input-placeholder {
+        
+                    // text-align: center;
+                 
+                 }
+                 
+                 :-moz-placeholder { /* Firefox 18- */
+                 
+                    // text-align: center;
+                 
+                 }
+                 
+                 ::-moz-placeholder {  /* Firefox 19+ */
+                 
+                    // text-align: center;
+                 
+                 }
+                 
+                 :-ms-input-placeholder {  
+                 
+                    // text-align: center;
+                 
+                 }
+            }
+        }
+        
+        .password{
+            margin-top: 22px;
+        }
+        .loginbtn{
+            border-radius: 5px;
+            background: #ff6a6a;
+           
+         //   width: 304px;
+        height: 50px;
+        margin-top:57px;
+            
+        }
+        .loginbtnGoogle{
+            border-radius: 5px;
+            background-image: linear-gradient(225deg, #ff8960 0%, #ff3a4f 100%);
+         //   width: 304px;
+        height: 50px;
     
-     .login-button{
-        border-radius: 5px;
-        margin-top: 20px;
-     }
-
-}
+        }
+    
+        .loginbtnFacebook{
+            border-radius: 5px;
+            background-image: linear-gradient(225deg, #808cba 0%, #3b5998 100%);
+         //   width: 304px;
+        height: 50px;
+        }
+        
+        .dontholder{
+            color: #fff;
+            p{
+                letter-spacing: 0px;
+            }
+            span{
+                a{
+                color:#fff;
+                text-decoration: none;
+                }
+            }
+        }
+    }
+    
